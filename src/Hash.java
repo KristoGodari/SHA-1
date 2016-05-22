@@ -257,21 +257,12 @@ public final class Hash {
 			String h3Hex = String.format("%21x", Long.parseLong(h3, 2));
 			String h4Hex = String.format("%21x", Long.parseLong(h4, 2));
 			
-			/*
+			
 			System.out.print("\n\t h0 = " + h0Hex);
 			System.out.print("\n\t h1 = " + h1Hex);
 			System.out.print("\n\t h2 = " + h2Hex);
 			System.out.print("\n\t h3 = " + h3Hex);
-			System.out.print("\n\t h4 = " + h4Hex); */
-			
-			
-			
-			System.out.print("\n\t h0 = 90ffc960");
-			System.out.print("\n\t h1 = 3ab25a00");
-			System.out.print("\n\t h2 = 564a501c");
-			System.out.print("\n\t h3 = 7b0bb259");
-			System.out.print("\n\t h4 = fabcfc1d");
-			
+			System.out.print("\n\t h4 = " + h4Hex);			
 			System.out.print("\n\t ");
 			
 			
@@ -279,8 +270,7 @@ public final class Hash {
 
 			System.out.println("\n ----> Pasul 16: Afisare rezultat final");
 			System.out.println("\n\t ");
-			//System.out.println("\n\t " + h0Hex.trim() + h1Hex.trim() + h2Hex.trim() + h3Hex.trim() + h4Hex.trim());
-			System.out.println("90ffc9603ab25a00564a501c7b0bb259fabcfc1d");
+			System.out.println("\n\t " + h0Hex.trim() + h1Hex.trim() + h2Hex.trim() + h3Hex.trim() + h4Hex.trim());
 			System.out.println("\n\t ");
 
 		} catch (Exception e) {
@@ -311,7 +301,7 @@ public final class Hash {
 
 		char[] BandC = andGateCharArrays(B, C);
 		char[] BandD = andGateCharArrays(B, D);
-		char[] CandD = andGateCharArrays(B, D);
+		char[] CandD = andGateCharArrays(C, D);
 		char[] BandCorBandD = orGateCharArrays(BandC, BandD);
 		char[] result = orGateCharArrays(BandCorBandD, CandD);
 

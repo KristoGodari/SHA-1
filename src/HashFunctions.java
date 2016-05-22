@@ -133,9 +133,9 @@ public class HashFunctions {
 
 		char[] stringToHashCaracters = null;
 
-		int[] asciiCodeForStringToHash = new int[100];
+		int[] asciiCodeForStringToHash = new int[10000];
 
-		String[] binaryStrings = new String[100];
+		String[] binaryStrings = new String[10000];
 
 		String binarStringsConcatenated = "";
 
@@ -143,9 +143,9 @@ public class HashFunctions {
 
 		int nrOf512bitBlocks = 0;
 
-		String[] blocks512bits = new String[100];
+		String[] blocks512bits = new String[10000];
 
-		String[][] words32Bit = new String[100][80];
+		String[][] words32Bit = new String[10000][80];
 		
 		String outputString = "";
 		
@@ -303,18 +303,41 @@ public class HashFunctions {
 					if (i < 20) {
 						F = new String(firstFunction(B.toCharArray(), C.toCharArray(), D.toCharArray()));
 						K = "01011010100000100111100110011001";
+						
+						/**
+						 * for debugging purpose
+							if(i == 0){
+								System.out.println("========= " + F);
+							}
+						**/
 
-					} else if (i < 40) {
+					} else if (i > 19 && i < 40) {
 
 						F = new String(secondFunction(B.toCharArray(), C.toCharArray(), D.toCharArray()));
 						K = "01101110110110011110101110100001";
+						
+						/**
+						 * for debugging purpose
+						 *
+							if(i == 20){
+								System.out.println("========= " + F);
+							}
+						 */
 
-					} else if (i < 60) {
+					} else if (i > 39 && i < 60) {
 
 						F = new String(thirdFunction(B.toCharArray(), C.toCharArray(), D.toCharArray()));
 						K = "10001111000110111011110011011100";
+						
+						/**
+						 * for debugging purpose
+						 * if(i == 40){
+							System.out.println("========= " + F);
+							}
+						 * 
+						 */						
 
-					} else if (i < 80) {
+					} else if (i > 59 && i < 80) {
 
 						F = new String(secondFunction(B.toCharArray(), C.toCharArray(), D.toCharArray()));
 						K = "11001010011000101100000111010110";
@@ -455,7 +478,7 @@ public class HashFunctions {
 
 		char[] BandC = andGateCharArrays(B, C);
 		char[] BandD = andGateCharArrays(B, D);
-		char[] CandD = andGateCharArrays(B, D);
+		char[] CandD = andGateCharArrays(C, D);
 		char[] BandCorBandD = orGateCharArrays(BandC, BandD);
 		char[] result = orGateCharArrays(BandCorBandD, CandD);
 
